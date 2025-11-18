@@ -18,6 +18,8 @@ jobs:
                     node-version: '20'
             -   name: Install pnpm
                 run: npm install -g pnpm
+            -   name: Add npm bin to PATH
+                run: echo "$(npm bin -g)" >> $GITHUB_PATH
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
