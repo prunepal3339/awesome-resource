@@ -52,6 +52,6 @@ jobs:
                 with:
                     tag_name: ${{ github.ref_name }}
                     name: Release ${{ github.ref_name }}
-                    files: "${{ github.workspace }}/releases/awesome-resource-${{ github.ref_name }}.zip"
+                    files: "${{ github.workspace }}/awesome-resource-${{ github.ref_name }}.zip"
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
