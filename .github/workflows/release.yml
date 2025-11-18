@@ -37,9 +37,9 @@ jobs:
                     ZIP_NAME="${PLUGIN_NAME}-${GITHUB_REF_NAME}.zip"
                     rm -rf $ZIP_NAME
                     zip -r $ZIP_NAME . \
-                     -x "*/.git/*" \
-                     -x "*/.github/*" \
-                     -x "*/node_modules/*" \
+                     -x ".git/*" \
+                     -x ".github/*" \
+                     -x "node_modules/*" \
                      -x "composer.json" \
                      -x "composer.lock" \
                      -x "package.json" \
@@ -52,6 +52,6 @@ jobs:
                 with:
                     tag_name: ${{ github.ref_name }}
                     name: Release ${{ github.ref_name }}
-                    files: "${{ github.workspace }}/awesome-resource-${{ github.ref_name }}.zip"
+                    files: "awesome-resource-${{ github.ref_name }}.zip"
                 env:
                     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
