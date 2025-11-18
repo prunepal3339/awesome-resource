@@ -12,19 +12,39 @@ jobs:
         steps:
             -   name: Checkout
                 uses: actions/checkout@v3
+            -   name: Setup Node.js
+                uses: actions/setup-node@v3
+                with:
+                    node-version: '20'
+                    cache: 'pnpm'
+            -   name: Install pnpm
+                run: npm install -g pnpm
             -   name: Setup PHP
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: '8.2'
             -   name: Install composer dependencies
                 run: composer install --no-dev --optimize-autoloader
+            -   name: Install node dependencies (If missed)
+                run: pnpm install
+            -   name: Build assets
+                run: pnpm run build
             
             -   name: Build Plugin Zip
                 run: |
                     PLUGIN_NAME="awesome-resource"
                     ZIP_NAME="${PLUGIN_NAME}-${GITHUB_REF_NAME}.zip"
                     rm -rf $ZIP_NAME
-                    zip -r $ZIP_NAME . -x "*.git" "*.github"
+                    zip -r $ZIP_NAME \
+                     -x "*.git" \
+                     -x "*.github" \
+                     -x "node_modules/*" \
+                     -x "composer.json" \
+                     -x "composer.lock" \
+                     -x "package.json" \
+                     -x "package-lock.json" \
+                     -x "pnpm-lock.yaml" \
+                     -x "webpack.config.js"
                 
             -   name: Create GitHub Release
                 uses: softprops/action-gh-release@v1
