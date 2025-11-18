@@ -24,10 +24,15 @@ abstract class AbstractCPT {
         $plural_name = $this->pluralize();
         $singular_name = $this->singularize();
         $labels = [
-            'name' => $plural_name,
-            'singular_name' => $singular_name,
-            'add_new_item' => "Add New {$singular_name}",
-            'edit_item' => "Edit {$singular_name}",
+            'name'               => esc_html__( $plural_name, 'awesome-resource' ),
+            'singular_name'      => esc_html__( $singular_name, 'awesome-resource' ),
+            'add_new_item'       => esc_html__( sprintf( 'Add New %s', $singular_name ), 'awesome-resource' ),
+            'edit_item'          => esc_html__( sprintf( 'Edit %s', $singular_name ), 'awesome-resource' ),
+            'all_items'          => esc_html__( sprintf( 'All %s', $plural_name ), 'awesome-resource' ),
+            'view_item'          => esc_html__( sprintf( 'View %s', $singular_name ), 'awesome-resource' ),
+            'search_items'       => esc_html__( sprintf( 'Search %s', $plural_name ), 'awesome-resource' ),
+            'not_found'          => esc_html__( sprintf( 'No %s found', strtolower($plural_name) ), 'awesome-resource' ),
+            'not_found_in_trash' => esc_html__( sprintf( 'No %s found in Trash', strtolower($plural_name) ), 'awesome-resource' ),
         ];
 
         $default_args = [
