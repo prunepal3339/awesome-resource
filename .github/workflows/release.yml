@@ -1,0 +1,36 @@
+name: "Build and release WP Plugin"
+
+#trigger on tag creation.
+on:
+    push:
+        tags:
+            - "v*"
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            -   name: Checkout
+                uses: actions/checkout@v3
+            -   name: Setup PHP
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.2'
+            -   name: Install composer dependencies
+                run: composer install --no-dev --optimize-autoloader
+            
+            -   name: Build Plugin Zip
+                run: |
+                    PLUGIN_NAME="awesome-resource"
+                    ZIP_NAME="${PLUGIN_NAME}-${GITHUB_REF_NAME}.zip"
+                    rm -rf $ZIP_NAME
+                    zip -r $ZIP_NAME . -x "*.git" "*.github"
+                
+            -   name: Create GitHub Release
+                uses: softprops/action-gh-release@v1
+                with:
+                    tag_name: ${{ github.ref_name }}
+                    name: Release ${{ github.ref_name }}
+                    files: "${{ github.workspace }}/releases/awesome-resource-${{ github.ref_name }}.zip"
+                env:
+                    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

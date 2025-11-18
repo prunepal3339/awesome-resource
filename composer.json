@@ -1,0 +1,39 @@
+{
+    "name": "prunepal3339/awesome-resource",
+    "description": "Awesome Resource for WordPress.",
+    "version": "0.1.0",
+    "authors": [
+        {
+            "name": "Purshottam Nepal",
+            "email": "prunepal3339@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ASMR\\": "src/"
+        }
+    },
+    "scripts": {
+        "phpcs": "@php vendor/bin/phpcs -ps . --standard=phpcs.xml",
+        "phpcbf": "@php vendor/bin/phpcbf -ps . --standard=phpcs.xml",
+        "test": "phpunit",
+        "post-install-cmd": [
+            "pnpm install"
+        ],
+        "post-update-cmd": [
+            "pnpm install"
+        ]
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*",
+        "wp-coding-standards/wpcs": "^3.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}

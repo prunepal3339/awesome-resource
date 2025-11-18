@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="AwesomeResourceWordPress">
+    <description>WordPress Coding Standards - enforce short array syntax.</description>
+
+    <!-- Exclude unnecessary paths -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/node_modules/*</exclude-pattern>
+    <exclude-pattern>*/tests/*</exclude-pattern>
+
+    <!-- Include WordPress Coding Standards -->
+    <rule ref="WordPress">
+        <!-- Enforce short array syntax -->
+        <rule ref="Generic.Arrays.DisallowLongArraySyntax"/>
+    </rule>
+
+</ruleset>
