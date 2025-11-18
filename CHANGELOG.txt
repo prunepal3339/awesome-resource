@@ -1,0 +1,9 @@
+= 0.2.0   - 18/11/2025
+* Enhance - Customizable label supported for empty / trash text in Resources post type. 
+* Fix     - Labels not translatable for Resources post type.
+
+= 0.1.5   - 18/11/2025
+* Fix     - Github action build issue.
+
+= 0.1.0   - 18/11/2025
+* Initial release.

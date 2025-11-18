@@ -3,13 +3,13 @@
  * Plugin Name: Awesome Resource
  * Description: Awesome resource CPT for WordPress.
  * Plugin Author: Purshottam Nepal
- * Version: 0.1.0
+ * Version: 0.2.0
  * License: GPLv2
  * Text domain: awesome-resource
  */
 defined( 'ABSPATH' ) || exit;
 
-define('ASMR_PLUGIN_VERSION', '0.1.0');
+define('ASMR_PLUGIN_VERSION', '0.2.0');
 define('ASMR_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('ASMR_PLUGIN_URL', plugin_dir_url(__FILE__));
 
